@@ -1,0 +1,127 @@
+{\rtf1\ansi\ansicpg1252\cocoartf1561\cocoasubrtf200
+{\fonttbl\f0\froman\fcharset0 Times-Roman;\f1\fswiss\fcharset0 Helvetica;\f2\fnil\fcharset0 Menlo-Regular;
+}
+{\colortbl;\red255\green255\blue255;\red0\green0\blue0;\red202\green202\blue202;\red23\green23\blue23;
+\red194\green126\blue101;\red167\green197\blue152;\red140\green211\blue254;\red70\green137\blue204;\red67\green192\blue160;
+\red79\green123\blue61;}
+{\*\expandedcolortbl;;\cssrgb\c0\c0\c0;\cssrgb\c83137\c83137\c83137;\cssrgb\c11765\c11765\c11765;
+\cssrgb\c80784\c56863\c47059;\cssrgb\c70980\c80784\c65882;\cssrgb\c61176\c86275\c99608;\cssrgb\c33725\c61176\c83922;\cssrgb\c30588\c78824\c69020;
+\cssrgb\c37647\c54510\c30588;}
+\paperw11900\paperh16840\margl1440\margr1440\vieww20020\viewh10200\viewkind0
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+
+\f0\fs24 \cf2 \expnd0\expndtw0\kerning0
+\
+              Train    Test\
+Alley          1365  1352.0\
+BsmtCond         37    45.0\
+BsmtExposure     38    44.0\
+BsmtFinSF1        0     1.0\
+BsmtFinSF2        0     1.0\
+BsmtFinType1     37    42.0\
+BsmtFinType2     38    42.0\
+BsmtFullBath      0     2.0\
+BsmtHalfBath      0     2.0\
+BsmtQual         37    44.0\
+BsmtUnfSF         0     1.0\
+Electrical        1     0.0\
+Exterior1st       0     1.0\
+Exterior2nd       0     1.0\
+Fence          1176  1169.0\
+FireplaceQu     690   730.0\
+Functional        0     2.0\
+GarageArea        0     1.0\
+GarageCars        0     1.0\
+GarageCond       81    77.0\
+GarageFinish     81    77.0\
+GarageQual       81    77.0\
+GarageType       81    76.0\
+GarageYrBlt      81    77.0\
+KitchenQual       0     1.0\
+LotFrontage     259   227.0\
+MSZoning          0     4.0\
+MasVnrArea        8    15.0\
+MasVnrType        8    16.0\
+MiscFeature    1402  1408.0\
+PoolQC         1451  1456.0\
+SaleType          0     1.0\
+TotalBsmtSF       0     1.0\
+Utilities         0     2.0\
+ElasticNetCV(alphas=[0.0001, 0.0005, 0.001, 0.01, 0.1, 1, 10], copy_X=True,\
+       cv=None, eps=0.001, fit_intercept=True,\
+       l1_ratio=[0.01, 0.1, 0.5, 0.9, 0.99], max_iter=5000, n_alphas=100,\
+       n_jobs=1, normalize=False, positive=False, precompute='auto',\
+       random_state=None, selection='cyclic', tol=0.0001, verbose=0)\
+R2: 0.9365755786884739\
+RMSE: 0.09658446906737084\
+Test\
+R2: 0.8903062500497809\
+RMSE: 0.1160540905348118\
+Accuracy: 0.92 (+/- 0.02)\
+GradientBoostingRegressor(alpha=0.9, criterion='friedman_mse', init=None,\
+             learning_rate=0.05, loss='huber', max_depth=3,\
+             max_features='sqrt', max_leaf_nodes=None,\
+             min_impurity_decrease=0.0, min_impurity_split=None,\
+             min_samples_leaf=15, min_samples_split=10,\
+             min_weight_fraction_leaf=0.0, n_estimators=3200,\
+             presort='auto', random_state=5, subsample=1.0, verbose=0,\
+             warm_start=False)\
+R2: 0.9750905336631159\
+RMSE: 0.06073413154465321\
+Test\
+R2: 0.8833262424821027\
+RMSE: 0.11984440127327475\
+Accuracy: 0.91 (+/- 0.02)\
+XGBRegressor(base_score=0.5, colsample_bylevel=1, colsample_bytree=0.2,\
+       gamma=0.0, learning_rate=0.05, max_delta_step=0, max_depth=6,\
+       min_child_weight=1.5, missing=None, n_estimators=7200, nthread=-1,\
+       objective='reg:linear', reg_alpha=0.9, reg_lambda=0.6,\
+       scale_pos_weight=1, seed=42, silent=1, subsample=0.2)\
+R2: 0.9876843834803333\
+RMSE: 0.04349111990813433\
+Test\
+R2: 0.874962235840959\
+RMSE: 0.12362154781335513\
+
+\f1 \cf0 \kerning1\expnd0\expndtw0 \
+Modificaciones realizadas en el script:\
+\
+\pard\pardeftab720\sl360\partightenfactor0
+
+\f2 \cf3 \cb4 \expnd0\expndtw0\kerning0
+train.drop(train[train[\cf5 "GrLivArea"\cf3 ] > \cf6 4000\cf3 ].index, \cf7 inplace\cf3 =\cf8 True\cf3 )\cb1 \
+\
+\cb4 test.loc[\cf6 666\cf3 , \cf5 "GarageQual"\cf3 ] = \cf5 "TA"\cf3 \cb1 \
+\cb4 test.loc[\cf6 666\cf3 , \cf5 "GarageCond"\cf3 ] = \cf5 "TA"\cf3 \cb1 \
+\cb4 test.loc[\cf6 666\cf3 , \cf5 "GarageFinish"\cf3 ] = \cf5 "Unf"\cf3 \cb1 \
+\cb4 test.loc[\cf6 666\cf3 , \cf5 "GarageYrBlt"\cf3 ] = \cf5 "1980"\
+\
+\cf3 qual_dict = \{\cf8 None\cf3 : \cf6 0\cf3 , \cf5 "Po"\cf3 : \cf6 1\cf3 , \cf5 "Fa"\cf3 : \cf6 2\cf3 , \cf5 "TA"\cf3 : \cf6 3\cf3 , \cf5 "Gd"\cf3 : \cf6 4\cf3 , \cf5 "Ex"\cf3 : \cf6 5\cf3 \}\cb1 \
+\cb4 features[\cf5 "ExterQual"\cf3 ] = features[\cf5 "ExterQual"\cf3 ].map(qual_dict).astype(\cf9 int\cf3 )\cb1 \
+\cb4 features[\cf5 "ExterCond"\cf3 ] = features[\cf5 "ExterCond"\cf3 ].map(qual_dict).astype(\cf9 int\cf3 )\cb1 \
+\pard\pardeftab720\sl360\partightenfactor0
+\cf10 \cb4 #features["BsmtQual"] = features["BsmtQual"].map(qual_dict).astype(int)\cf3 \cb1 \
+\cf10 \cb4 #features["BsmtCond"] = features["BsmtCond"].map(qual_dict).astype(int)\cf3 \cb1 \
+\pard\pardeftab720\sl360\partightenfactor0
+\cf3 \cb4 features[\cf5 "HeatingQC"\cf3 ] = features[\cf5 "HeatingQC"\cf3 ].map(qual_dict).astype(\cf9 int\cf3 )\cb1 \
+\cb4 features[\cf5 "KitchenQual"\cf3 ] = features[\cf5 "KitchenQual"\cf3 ].map(qual_dict).astype(\cf9 int\cf3 )\cb1 \
+\pard\pardeftab720\sl360\partightenfactor0
+\cf10 \cb4 #features["FireplaceQu"] = features["FireplaceQu"].map(qual_dict).astype(int)\cf3 \cb1 \
+\cf10 \cb4 #features["GarageQual"] = features["GarageQual"].map(qual_dict).astype(int)\cf3 \cb1 \
+\cf10 \cb4 #features["GarageCond"] = features["GarageCond"].map(qual_dict).astype(int)\cf3 \cb1 \
+\
+\
+\pard\pardeftab720\sl360\partightenfactor0
+\cf3 \cb4 features[\cf5 "Functional"\cf3 ] = features[\cf5 "Functional"\cf3 ].map(\cb1 \
+\cb4         \{\cf8 None\cf3 : \cf6 0\cf3 , \cf5 "Sal"\cf3 : \cf6 1\cf3 , \cf5 "Sev"\cf3 : \cf6 2\cf3 , \cf5 "Maj2"\cf3 : \cf6 3\cf3 , \cf5 "Maj1"\cf3 : \cf6 4\cf3 , \cb1 \
+\cb4          \cf5 "Mod"\cf3 : \cf6 5\cf3 , \cf5 "Min2"\cf3 : \cf6 6\cf3 , \cf5 "Min1"\cf3 : \cf6 7\cf3 , \cf5 "Typ"\cf3 : \cf6 8\cf3 \}).astype(\cf9 int\cf3 )\
+\
+\
+Final_labels = (np.exp(GB_model.predict(test_features)) + np.exp(ENST_model.predict(test_features_st)) + np.exp(XG_model.predict(test_features))) / \cf6 3\cf3 \cb1 \
+\
+\
+\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+
+\f1 \cf0 \kerning1\expnd0\expndtw0 \
+}

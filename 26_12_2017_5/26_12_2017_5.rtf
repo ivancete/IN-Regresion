@@ -1,0 +1,130 @@
+{\rtf1\ansi\ansicpg1252\cocoartf1561\cocoasubrtf200
+{\fonttbl\f0\fswiss\fcharset0 Helvetica;\f1\fnil\fcharset0 Menlo-Regular;}
+{\colortbl;\red255\green255\blue255;\red88\green118\blue71;\red32\green32\blue32;\red153\green168\blue186;
+\red152\green54\blue29;\red86\green132\blue173;\red191\green100\blue38;\red109\green109\blue109;\red117\green114\blue185;
+\red79\green123\blue61;\red23\green23\blue23;\red202\green202\blue202;\red194\green126\blue101;}
+{\*\expandedcolortbl;;\csgenericrgb\c34510\c46275\c27843;\csgenericrgb\c12549\c12549\c12549;\csgenericrgb\c60000\c65882\c72941;
+\csgenericrgb\c59608\c21176\c11373;\csgenericrgb\c33725\c51765\c67843;\csgenericrgb\c74902\c39216\c14902;\csgenericrgb\c42745\c42745\c42745;\csgenericrgb\c45882\c44706\c72549;
+\cssrgb\c37647\c54510\c30588;\cssrgb\c11765\c11765\c11765;\cssrgb\c83137\c83137\c83137;\cssrgb\c80784\c56863\c47059;}
+\paperw11900\paperh16840\margl1440\margr1440\vieww10800\viewh8400\viewkind0
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+
+\f0\fs24 \cf0 POSICION: 688\
+\
+\
+              Train    Test\
+Alley          1369  1352.0\
+BsmtCond         37    45.0\
+BsmtExposure     38    44.0\
+BsmtFinSF1        0     1.0\
+BsmtFinSF2        0     1.0\
+BsmtFinType1     37    42.0\
+BsmtFinType2     38    42.0\
+BsmtFullBath      0     2.0\
+BsmtHalfBath      0     2.0\
+BsmtQual         37    44.0\
+BsmtUnfSF         0     1.0\
+Electrical        1     0.0\
+Exterior1st       0     1.0\
+Exterior2nd       0     1.0\
+Fence          1179  1169.0\
+FireplaceQu     690   730.0\
+Functional        0     2.0\
+GarageArea        0     1.0\
+GarageCars        0     1.0\
+GarageCond       81    78.0\
+GarageFinish     81    78.0\
+GarageQual       81    78.0\
+GarageType       81    76.0\
+GarageYrBlt      81    78.0\
+KitchenQual       0     1.0\
+LotFrontage     259   227.0\
+MSZoning          0     4.0\
+MasVnrArea        8    15.0\
+MasVnrType        8    16.0\
+MiscFeature    1406  1408.0\
+PoolQC         1453  1456.0\
+SaleType          0     1.0\
+TotalBsmtSF       0     1.0\
+Utilities         0     2.0\
+ElasticNetCV(alphas=[0.0001, 0.0005, 0.001, 0.01, 0.1, 1, 10], copy_X=True,\
+       cv=None, eps=0.001, fit_intercept=True,\
+       l1_ratio=[0.01, 0.1, 0.5, 0.9, 0.99], max_iter=5000, n_alphas=100,\
+       n_jobs=1, normalize=False, positive=False, precompute='auto',\
+       random_state=None, selection='cyclic', tol=0.0001, verbose=0)\
+R2: 0.91800649285382\
+RMSE: 0.1091951814069412\
+Test\
+R2: 0.9204646029492292\
+RMSE: 0.09914042651104298\
+Accuracy: 0.88 (+/- 0.11)\
+GradientBoostingRegressor(alpha=0.9, criterion='friedman_mse', init=None,\
+             learning_rate=0.05, loss='huber', max_depth=3,\
+             max_features='sqrt', max_leaf_nodes=None,\
+             min_impurity_decrease=0.0, min_impurity_split=None,\
+             min_samples_leaf=15, min_samples_split=10,\
+             min_weight_fraction_leaf=0.0, n_estimators=3000,\
+             presort='auto', random_state=None, subsample=1.0, verbose=0,\
+             warm_start=False)\
+R2: 0.9641197600335483\
+RMSE: 0.07375388317842049\
+Test\
+R2: 0.9234602016448841\
+RMSE: 0.09899383100113353\
+Accuracy: 0.90 (+/- 0.04)\
+\
+\
+\
+Modificaciones realizadas en el script:\
+Los par\'e1metros cambiados al gradient boosting son el n\'famero de estimadores de 3500 a 3000, y el max depth de 5 a 3.\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+
+\f1 \cf2 \cb3 '''\
+Gradient Boosting\
+'''\
+\
+\cf4 \cb3 GBest = ensemble.GradientBoostingRegressor(\cf5 \cb3 n_estimators\cf4 \cb3 =\cf6 3000\cf7 \cb3 , \cf5 \cb3 learning_rate\cf4 \cb3 =\cf6 0.05\cf7 \cb3 , \cf5 \cb3 max_depth\cf4 \cb3 =\cf6 3\cf7 \cb3 , \cf5 \cb3 max_features\cf4 \cb3 =\cf2 \cb3 'sqrt'\cf7 ,\
+                                               \cf5 \cb3 min_samples_leaf\cf4 \cb3 =\cf6 15\cf7 \cb3 , \cf5 \cb3 min_samples_split\cf4 \cb3 =\cf6 10\cf7 \cb3 , \cf5 \cb3 loss\cf4 \cb3 =\cf2 \cb3 'huber'\cf4 \cb3 ).fit(x_train\cf7 \cb3 , \cf4 \cb3 y_train)\
+train_test(GBest\cf7 \cb3 , \cf4 \cb3 x_train\cf7 \cb3 , \cf4 \cb3 x_test\cf7 \cb3 , \cf4 \cb3 y_train\cf7 \cb3 , \cf4 \cb3 y_test)\
+\
+\cf8 # Average R2 score and standart deviation of 5-fold cross-validation\
+\cf4 scores = cross_val_score(GBest\cf7 \cb3 , \cf4 \cb3 train_features_st\cf7 \cb3 , \cf4 \cb3 train_labels\cf7 \cb3 , \cf5 \cb3 cv\cf4 \cb3 =\cf6 5\cf4 )\
+\cf9 \cb3 print\cf4 \cb3 (\cf2 \cb3 "Accuracy: %0.2f (+/- %0.2f)" \cf4 \cb3 % (scores.mean()\cf7 \cb3 , \cf4 \cb3 scores.std() * \cf6 2\cf4 ))\
+\
+\cf8 # Retraining models\
+\cf4 GB_model = GBest.fit(train_features\cf7 \cb3 , \cf4 \cb3 train_labels)\
+ENST_model = ENSTest.fit(train_features_st\cf7 \cb3 , \cf4 \cb3 train_labels)\cf8 \
+\
+## Getting our SalePrice estimation\
+\cf4 Final_labels = (np.exp(GB_model.predict(test_features)) + np.exp(ENST_model.predict(test_features_st))) / \cf6 2\
+\
+\cf8 ## Saving to CSV\
+\cf4 pd.DataFrame(\{\cf2 \cb3 'Id'\cf4 \cb3 : test.Id\cf7 \cb3 , \cf2 'SalePrice'\cf4 \cb3 : Final_labels\}).to_csv(\cf2 \cb3 'submissionGradientBoosted.csv'\cf7 , \cf5 \cb3 index \cf4 \cb3 =\cf7 \cb3 False\cf4 \cb3 )\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+\cf4 \
+\
+VIEJO\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+\cf8 # GarageType, GarageFinish, GarageQual  NA in all. NA means No Garage\
+#for col in ('GarageType', 'GarageFinish', 'GarageQual'):\
+#    features[col] = features[col].fillna('NoGRG')\
+\
+NUEVO\
+#GarageCars  NA in pred. I suppose NA means 0\
+features['GarageCars'] = features['GarageCars'].fillna(0.0)\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+\cf4 \
+\
+VIEJO\
+\pard\pardeftab720\sl360\partightenfactor0
+\cf10 \cb11 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec10 ## Standardizing numeric features\cf12 \cb1 \strokec12 \
+\cb11 #numeric_features = features.loc[:,[\cf13 \strokec13 'LotFrontage'\cf12 \strokec12 , \cf13 \strokec13 'LotArea'\cf12 \strokec12 , \cf13 \strokec13 'GrLivArea'\cf12 \strokec12 , #\cf13 \strokec13 \'92TotalSF'\cf12 \strokec12 ]]\cb1 \
+\cb11 #numeric_features_standardized = (numeric_features - #numeric_features.mean())/numeric_features.std()\cb1 \
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+\cf4 \cb3 \kerning1\expnd0\expndtw0 \outl0\strokewidth0 \
+NUEVO\
+\cf8 ## Standardizing numeric features\
+\cf4 numeric_features = features.loc[:\cf7 \cb3 ,\cf4 \cb3 [\cf2 \cb3 'LotArea'\cf7 , \cf2 'GrLivArea'\cf7 , \cf2 'TotalSF'\cf4 \cb3 ]]\
+numeric_features_standardized = (numeric_features - numeric_features.mean())/numeric_features.std()\
+}

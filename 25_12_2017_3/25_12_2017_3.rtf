@@ -1,0 +1,95 @@
+{\rtf1\ansi\ansicpg1252\cocoartf1561\cocoasubrtf200
+{\fonttbl\f0\fswiss\fcharset0 Helvetica;\f1\fnil\fcharset0 Menlo-Regular;}
+{\colortbl;\red255\green255\blue255;\red88\green118\blue71;\red32\green32\blue32;\red153\green168\blue186;
+\red152\green54\blue29;\red86\green132\blue173;\red191\green100\blue38;\red109\green109\blue109;\red117\green114\blue185;
+}
+{\*\expandedcolortbl;;\csgenericrgb\c34510\c46275\c27843;\csgenericrgb\c12549\c12549\c12549;\csgenericrgb\c60000\c65882\c72941;
+\csgenericrgb\c59608\c21176\c11373;\csgenericrgb\c33725\c51765\c67843;\csgenericrgb\c74902\c39216\c14902;\csgenericrgb\c42745\c42745\c42745;\csgenericrgb\c45882\c44706\c72549;
+}
+\paperw11900\paperh16840\margl1440\margr1440\vieww10800\viewh8400\viewkind0
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+
+\f0\fs24 \cf0 POSICION: 1038\
+              Train    Test\
+Alley          1369  1352.0\
+BsmtCond         37    45.0\
+BsmtExposure     38    44.0\
+BsmtFinSF1        0     1.0\
+BsmtFinSF2        0     1.0\
+BsmtFinType1     37    42.0\
+BsmtFinType2     38    42.0\
+BsmtFullBath      0     2.0\
+BsmtHalfBath      0     2.0\
+BsmtQual         37    44.0\
+BsmtUnfSF         0     1.0\
+Electrical        1     0.0\
+Exterior1st       0     1.0\
+Exterior2nd       0     1.0\
+Fence          1179  1169.0\
+FireplaceQu     690   730.0\
+Functional        0     2.0\
+GarageArea        0     1.0\
+GarageCars        0     1.0\
+GarageCond       81    78.0\
+GarageFinish     81    78.0\
+GarageQual       81    78.0\
+GarageType       81    76.0\
+GarageYrBlt      81    78.0\
+KitchenQual       0     1.0\
+LotFrontage     259   227.0\
+MSZoning          0     4.0\
+MasVnrArea        8    15.0\
+MasVnrType        8    16.0\
+MiscFeature    1406  1408.0\
+PoolQC         1453  1456.0\
+SaleType          0     1.0\
+TotalBsmtSF       0     1.0\
+Utilities         0     2.0\
+ElasticNetCV(alphas=[0.0001, 0.0005, 0.001, 0.01, 0.1, 1, 10], copy_X=True,\
+       cv=None, eps=0.001, fit_intercept=True,\
+       l1_ratio=[0.01, 0.1, 0.5, 0.9, 0.99], max_iter=5000, n_alphas=100,\
+       n_jobs=1, normalize=False, positive=False, precompute='auto',\
+       random_state=None, selection='cyclic', tol=0.0001, verbose=0)\
+R2: 0.900928327547388\
+RMSE: 0.11921418466703167\
+Test\
+R2: 0.8967299028997477\
+RMSE: 0.1109704489833646\
+Accuracy: 0.88 (+/- 0.10)\
+SVR(C=1.0, cache_size=200, coef0=0.0, degree=3, epsilon=0.2, gamma='auto',\
+  kernel='rbf', max_iter=3000, shrinking=True, tol=0.001, verbose=False)\
+R2: 0.5541760034491283\
+RMSE: 0.17413587923793689\
+Test\
+R2: -77.21006089486248\
+RMSE: 0.36383734560509157\
+Accuracy: 0.83 (+/- 0.04)\
+\
+\
+Cambios realizados en la elecci\'f3n del algoritmo:\
+\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+
+\f1 \cf2 \cb3 '''\
+SVR\
+'''\
+\
+\cf4 SVRest = SVR(\cf5 C\cf4 =\cf6 1.0\cf7 , \cf5 cache_size\cf4 =\cf6 200\cf7 , \cf5 coef0\cf4 =\cf6 0.0\cf7 , \cf5 degree\cf4 =\cf6 3\cf7 , \cf5 epsilon\cf4 =\cf6 0.2\cf7 , \cf5 gamma\cf4 =\cf2 'auto'\cf7 ,\
+    \cf5 kernel\cf4 =\cf2 'rbf'\cf7 , \cf5 max_iter\cf4 =\cf6 3000\cf7 , \cf5 shrinking\cf4 =\cf7 True, \cf5 tol\cf4 =\cf6 0.001\cf7 , \cf5 verbose\cf4 =\cf7 False\cf4 ).fit(x_train\cf7 , \cf4 y_train)\
+\
+train_test(SVRest\cf7 , \cf4 x_train\cf7 , \cf4 x_test\cf7 , \cf4 y_train\cf7 , \cf4 y_test)\
+\
+\cf8 # Average R2 score and standart deviation of 5-fold cross-validation\
+\cf4 scores = cross_val_score(SVRest\cf7 , \cf4 train_features_st\cf7 , \cf4 train_labels\cf7 , \cf5 cv\cf4 =\cf6 5\cf4 )\
+\cf9 print\cf4 (\cf2 "Accuracy: %0.2f (+/- %0.2f)" \cf4 % (scores.mean()\cf7 , \cf4 scores.std() * \cf6 2\cf4 ))\
+\
+\cf8 # Retraining models\
+\cf4 SVR_model = SVRest.fit(train_features\cf7 , \cf4 train_labels)\
+ENST_model = ENSTest.fit(train_features_st\cf7 , \cf4 train_labels)\
+\
+\cf8 ## Getting our SalePrice estimation\
+\cf4 Final_labels = (np.exp(SVR_model.predict(test_features)) + np.exp(ENST_model.predict(test_features_st))) / \cf6 2\
+\
+\cf8 ## Saving to CSV\
+\cf4 pd.DataFrame(\{\cf2 'Id'\cf4 : test.Id\cf7 , \cf2 'SalePrice'\cf4 : Final_labels\}).to_csv(\cf2 'submissionSVR.csv'\cf7 , \cf5 index \cf4 =\cf7 False\cf4 )\
+}

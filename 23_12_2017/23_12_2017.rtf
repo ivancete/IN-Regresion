@@ -1,0 +1,70 @@
+{\rtf1\ansi\ansicpg1252\cocoartf1561\cocoasubrtf200
+{\fonttbl\f0\fswiss\fcharset0 Helvetica;}
+{\colortbl;\red255\green255\blue255;}
+{\*\expandedcolortbl;;}
+\paperw11900\paperh16840\margl1440\margr1440\vieww10800\viewh8400\viewkind0
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+
+\f0\fs24 \cf0 POSICION: 1038        \
+\
+      Train    Test\
+Alley          1369  1352.0\
+BsmtCond         37    45.0\
+BsmtExposure     38    44.0\
+BsmtFinSF1        0     1.0\
+BsmtFinSF2        0     1.0\
+BsmtFinType1     37    42.0\
+BsmtFinType2     38    42.0\
+BsmtFullBath      0     2.0\
+BsmtHalfBath      0     2.0\
+BsmtQual         37    44.0\
+BsmtUnfSF         0     1.0\
+Electrical        1     0.0\
+Exterior1st       0     1.0\
+Exterior2nd       0     1.0\
+Fence          1179  1169.0\
+FireplaceQu     690   730.0\
+Functional        0     2.0\
+GarageArea        0     1.0\
+GarageCars        0     1.0\
+GarageCond       81    78.0\
+GarageFinish     81    78.0\
+GarageQual       81    78.0\
+GarageType       81    76.0\
+GarageYrBlt      81    78.0\
+KitchenQual       0     1.0\
+LotFrontage     259   227.0\
+MSZoning          0     4.0\
+MasVnrArea        8    15.0\
+MasVnrType        8    16.0\
+MiscFeature    1406  1408.0\
+PoolQC         1453  1456.0\
+SaleType          0     1.0\
+TotalBsmtSF       0     1.0\
+Utilities         0     2.0\
+ElasticNetCV(alphas=[0.0001, 0.0005, 0.001, 0.01, 0.1, 1, 10], copy_X=True,\
+       cv=None, eps=0.001, fit_intercept=True,\
+       l1_ratio=[0.01, 0.1, 0.5, 0.9, 0.99], max_iter=5000, n_alphas=100,\
+       n_jobs=1, normalize=False, positive=False, precompute='auto',\
+       random_state=None, selection='cyclic', tol=0.0001, verbose=0)\
+R2: 0.900928279379\
+RMSE: 0.119214198337\
+Test\
+R2: 0.896729955515\
+RMSE: 0.110970425453\
+Accuracy: 0.88 (+/- 0.10)\
+GradientBoostingRegressor(alpha=0.9, criterion='friedman_mse', init=None,\
+             learning_rate=0.05, loss='huber', max_depth=3,\
+             max_features='sqrt', max_leaf_nodes=None,\
+             min_impurity_decrease=0.0, min_impurity_split=None,\
+             min_samples_leaf=15, min_samples_split=10,\
+             min_weight_fraction_leaf=0.0, n_estimators=3000,\
+             presort='auto', random_state=None, subsample=1.0, verbose=0,\
+             warm_start=False)\
+R2: 0.96145098158\
+RMSE: 0.0763571532594\
+Test\
+R2: 0.905967568118\
+RMSE: 0.105644769964\
+Accuracy: 0.90 (+/- 0.04)\
+}
