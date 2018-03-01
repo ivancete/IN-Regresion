@@ -25,10 +25,7 @@ Este proyecto está enfocado para el aprendizaje de técnicas de Inteligencia de
 >https://matplotlib.org/
 >## Pandas
 >https://pandas.pydata.org/
->## LightGBM
->https://lightgbm.readthedocs.io/en/latest/
->## XGBoost
->https://xgboost.readthedocs.io/en/latest/
+
 
 ## Algoritmos Usados
 >## Gradient Boosting
@@ -41,3 +38,7 @@ https://en.wikipedia.org/wiki/Artificial_neural_network
 https://en.wikipedia.org/wiki/K-nearest_neighbors_algorithm
 >## Random Forest
 https://es.wikipedia.org/wiki/Random_forest
+>## LightGBM
+>https://lightgbm.readthedocs.io/en/latest/
+>## XGBoost
+>https://xgboost.readthedocs.io/en/latest/
